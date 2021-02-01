@@ -7,7 +7,9 @@ const program = new commander.Command();
 program
   .version('1.0.0')
   .description('Compares two configuration files and shows a difference.')
-  .option('-h, --help', 'output usage information');
+  .arguments('<filepath1> <filepath2>')
+  .option('-h, --help', 'output usage information')
+  .option('-f, --format [type]',  'output format');
   
 program.parse(process.argv);
 
