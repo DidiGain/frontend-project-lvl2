@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 const buildAst = (obj1, obj2) => {
   const unitedKeys = _.sortBy(_.union(Object.keys(obj1), Object.keys(obj2)));
-  
+
   return unitedKeys.map((key) => {
     const value1 = obj1[key];
     const value2 = obj2[key];
