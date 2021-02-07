@@ -10,8 +10,8 @@ build:
 test:
 		npm test
 
-start:
-		npx babel-node -- src/bin/gendiff.js
+test-coverage:
+		npm test -- --coverage --coverageProvider=v8
 
 lint:
 		npx eslint .
