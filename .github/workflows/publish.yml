@@ -1,0 +1,41 @@
+# This workflow will run tests using node
+
+name: Running Tests
+
+on:
+  push:
+    branches: 
+    - main
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+      env: 
+        CI: true
+    - name: run linter
+      run: |
+        make lint
+    - name: test & publish code coverage
+      uses: paambaati/codeclimate-action@v2.7.2
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+      with:
+        coverageCommand: make test-coverage
+        debug: true
+
