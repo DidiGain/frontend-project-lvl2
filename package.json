@@ -7,7 +7,11 @@
     "gendiff": "bin/gendiff.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx -n --experimental-vm-modules jest"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {}
   },
   "type": "module",
   "repository": {
@@ -21,6 +25,7 @@
   },
   "homepage": "https://github.com/DidiGain/frontend-project-lvl2#readme",
   "dependencies": {
+    "@jest/globals": "^26.6.2",
     "commander": "^7.0.0",
     "lodash": "^4.17.20"
   },
